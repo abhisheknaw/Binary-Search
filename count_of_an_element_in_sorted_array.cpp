@@ -11,11 +11,11 @@ int foccur(int a[],int s,int e,int x)
 			res=mid;
 			e=mid-1;
 		}
-		else if(a[mid]<x)
+		if(a[mid]<x)
 		{
 			s=mid+1;
 		}
-		else if(a[mid]>x)
+		if(a[mid]>x)
 		{
 			e=mid-1;
 		}
@@ -33,11 +33,11 @@ int loccur(int a[],int s,int e,int x)
 			ans=mid;
 			s=mid+1;
 		}
-		else if(a[mid]<x)
+		if(a[mid]<x)
 		{
 			s=mid+1;
 		}
-		else if(a[mid]>x)
+		if(a[mid]>x)
 		{
 			e=mid-1;
 		}
@@ -67,6 +67,12 @@ int main()
     cin>>x;
     int res=foccur(a,0,n-1,x);
     int ans=loccur(a,0,n-1,x);
-    cout<<res<<" "<<ans;
+    if(res==-1 || ans==-1)
+    {
+        cout<<"not found";
+    }
+    int count=ans-res+1;
+    cout<<"\n";
+    cout<<count;
     return 0;
-  } 
+ }
