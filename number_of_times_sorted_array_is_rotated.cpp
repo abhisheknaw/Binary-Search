@@ -13,13 +13,13 @@ int rotated(int a[],int s,int e,int n)
 			pivot=mid;
 			break;
 		}
-		else if(a[s]<=a[mid])
+		else if(a[mid]<a[e])
 		{
-			s=mid+1;
+			e=mid-1;
 		}
 		else
 		{
-			e=mid-1;
+			s=mid+1;
 		}
 	}
 	return pivot;
