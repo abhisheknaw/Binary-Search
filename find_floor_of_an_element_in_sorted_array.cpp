@@ -1,32 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-int search(int a[],int s,int e,int x)
+int floor(int a[],int s,int e,int x)
 {
+	int res,ans;
 	while(s<=e)
 	{
-		int mid = s+(e-s)/2;
+		int mid=s+(e-s)/2;
 		if(a[mid]==x)
 		{
-			return mid;
+			ans=a[mid];
+			return ans;
 		}
-		else if(a[mid+1]==x && mid+1<=e)
+		else if(a[mid]<x)
 		{
-			return mid+1;
-		}
-		else if(a[mid-1]==x && mid-1>=s)
-		{
-			return mid-1;
-		}
-		else if(x<a[mid-1])
-		{
-			e=mid-2;
+			res=a[mid];
+			s=mid+1;
 		}
 		else
 		{
-			s=mid+2;
+			e=mid-1;
 		}
 	}
-	return -1;
+	return res;
 }
 
 int main() 
@@ -49,14 +44,7 @@ int main()
 		cin>>a[i];
 	}
 	cin>>x;
-	int index=search(a,0,n-1,x);
-	if(index==-1)
-	{
-		cout<<"element not exist";
-	}
-	else
-	{
-		cout<<index;
-	}
+	int b=floor(a,0,n-1,x);
+	cout<<"floor value="<<b;
 	return 0;
 }	
